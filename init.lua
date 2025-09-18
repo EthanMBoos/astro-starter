@@ -30,9 +30,22 @@ vim.api.nvim_create_autocmd("VimEnter" , { command = " set nofoldenable "})
 vim.opt.clipboard = "unnamedplus"
 
 -- Remove trailing whitespace on save
-vim.api.nvim_create_autocmd("BufWritePre", {
-  pattern = "*",
-  command = [[%s/\s\+$//e]],
+vim.api.nvim_create_autocmd('BufWritePre', {
+  group = vim.api.nvim_create_augroup('TrimTrailingWhitespace', { clear = true }),
+  pattern = '*', -- Applies to all files
+  callback = function()
+    -- Save the current cursor position
+    local curpos = vim.api.nvim_win_get_cursor(0)
+    vim.cmd([[keeppatterns %s/\s\+$//e]])
+    vim.api.nvim_win_set_cursor(0, curpos)
+  end,
+  desc = 'Trim trailing whitespace on save and preserve cursor position',
+})
+
+-- See different named cmake files as still the cmake type
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+  pattern = "CMakeLists-*.txt",
+  command = "set filetype=cmake",
 })
 
 -- Enable xml highlighting for ROS .launch files

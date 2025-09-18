@@ -44,7 +44,28 @@ return {
     -- customize language server configuration options passed to `lspconfig`
     ---@diagnostic disable: missing-fields
     config = {
-      clangd = { "docker", "exec", "-it", "<container_name>", "clangd", "--background-index", "--path-mappings=/home/<host_usr>/code=/home/<docker_usr>", "--compile-commands-dir=./build"},
+      clangd = {
+        cmd = {
+          "docker",
+          "exec",
+          "-i",
+          "<docker_container>",
+          "clangd",
+          "--background-index",
+          "--path-mappings=/home/<user>/code=/home/<docker_user>",
+          "--compile-commands-dir=./build",
+        },
+      },
+
+      cmakels = {
+        cmd = {
+          "docker",
+          "exec",
+          "-i",
+          "<docker_container>",
+          "cmake-language-server",
+        },
+      },
     },
     -- customize how language servers are attached
     handlers = {
