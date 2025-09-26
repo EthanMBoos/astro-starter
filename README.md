@@ -70,9 +70,10 @@ vim ~/.tmux.conf
 
 ```
 
-#### Source tmux
+#### Source tmux and run neovim
 ```bash
-# before running tmux command source the new config
+# Before running tmux command source the new config
 tmux source-file ~/.tmux.conf
 tmux
+nvim
 ```
