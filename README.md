@@ -44,6 +44,7 @@ cd ~/Downloads
 sudo unzip Hack.zip -d /usr/local/share/fonts
 sudo fc-cache -f -v
 # Go to terminal preferences and select Hackfont
+# Close terminal, open another
 
 # Terminal Catpuccin theme
 # https://github.com/catppuccin/gnome-terminal
