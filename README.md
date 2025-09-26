@@ -55,7 +55,7 @@ curl -L https://raw.githubusercontent.com/catppuccin/gnome-terminal/v1.0.0/insta
 set -o vi
 ```
 
-##### Tmux 
+### Tmux 
 ```bash
 # Install tmux and plugin manager
 sudo apt-get install tmux
@@ -63,4 +63,16 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 # Create config file
 vim ~/.tmux.conf
+```
+
+#### Tmux config file settings
+```bash
+
+```
+
+#### Source tmux
+```bash
+# before running tmux command source the new config
+tmux source-file ~/.tmux.conf
+tmux
 ```
