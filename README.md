@@ -51,7 +51,8 @@ sudo fc-cache -f -v
 # Terminal Catpuccin theme
 # https://github.com/catppuccin/gnome-terminal
 curl -L https://raw.githubusercontent.com/catppuccin/gnome-terminal/v1.0.0/install.py | python3 -
-# Go go terminal preferences and select profile
+# Go go terminal preferences, set as default
+# Close terminal, open another
 
 # Put terminal in vim mode.
 # Add the below line to ~/.bashrc
