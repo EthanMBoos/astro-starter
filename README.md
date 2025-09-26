@@ -67,7 +67,53 @@ vim ~/.tmux.conf
 
 #### Tmux config file settings
 ```bash
+unbind r
+bind r source-file ~/.tmux.conf
 
+set -g prefix C-s
+set -g status off
+set -g mouse on
+
+# Navigate with vim keys
+# Hold Ctrl + hjkl
+setw -g mode-keys vi
+bind-key -n -r C-h select-pane -L
+bind-key -n -r C-j select-pane -D
+bind-key -n -r C-k select-pane -U
+bind-key -n -r C-l select-pane -R
+
+# Resize panes with vim keys
+# Ctrl + s + hjkl
+bind -r h resize-pane -L 5
+bind -r j resize-pane -D 5
+bind -r k resize-pane -U 5
+bind -r l resize-pane -R 5
+
+# Show colors in terminal 
+set -g default-terminal "screen-256color"
+# Fix mismatched terminal + nvim colors
+set-option -sa terminal-features ',xterm-256color:RGB'
+
+# Copy directly to system keyboard
+bind -T copy-mode-vi y send-keys -X copy-pipe-and-cancel 'xclip -in -selection clipboard'
+
+# Reduce escape-time for faster vim responsiveness
+set-option -s escape-time 0
+
+# Increase scrollback history
+set -g history-limit 50000
+
+# List of plugins
+#####################################################
+# Plugin manager
+set -g @plugin 'tmux-plugins/tpm'
+
+# Navigate between tmux and vim with same keybindings
+set -g @plugin 'christoomey/vim-tmux-navigator'
+#####################################################
+
+# Initialize TMUX plugin manager (keep this line at the bottom of tmux.conf)
+run '~/.tmux/plugins/tpm/tpm'
 ```
 
 #### Source tmux and run neovim
