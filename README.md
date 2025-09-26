@@ -1,34 +1,66 @@
-# AstroNvim Template
-
-**NOTE:** This is for AstroNvim v5+
-
-A template for getting started with [AstroNvim](https://github.com/AstroNvim/AstroNvim)
-
-## 🛠️ Installation
-
-#### Make a backup of your current nvim and shared folder
+# New VM Dependencies & Terminal Setup
 
 ```shell
-mv ~/.config/nvim ~/.config/nvim.bak
-mv ~/.local/share/nvim ~/.local/share/nvim.bak
-mv ~/.local/state/nvim ~/.local/state/nvim.bak
-mv ~/.cache/nvim ~/.cache/nvim.bak
+# Clear out old settings (if present)
+rm ~/.config/nvim
+rm ~/.local/share/nvim
+rm ~/.local/state/nvim
+rm ~/.cache/nvim
+```
+### Dependencies & Terminal
+```bash
+# Install dependencies
+sudo apt-get update
+sudo apt-get upgrade
+
+# Dev packages
+sudo apt-get install net-tools
+sudo apt-get install xclip
+sudo snap install lnav
+
+# Nvim dependencies
+sudo apt-get install ripgrep
+sudo snap install nvim --classic
+sudo apt-get install clangd
+sudo apt-get install vim
+
+# Git setup
+sudo apt-get install git
+git config --user.name "<name>"
+git config --user.email "<email>"
+git config —global core.editor “nvim”
+ssh-keygen -t rsa -b 4096
+ssh-add ~./ssh/id_rsa
+
+# Lazygit - https://github.com/jesseduffield/lazygit
+LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | \grep -Po '"tag_name": *"v\K[^"]*')
+curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/download/v${LAZYGIT_VERSION}/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
+tar xf lazygit.tar.gz lazygit
+sudo install lazygit -D -t /usr/local/bin/
+
+# Download Hackfont - https://www.nerdfonts.com/font-downloads
+sudo mkdir /usr/local/share/fonts/
+cd ~/Downloads
+sudo unzip Hack.zip -d /usr/local/share/fonts
+sudo fc-cache -f -v
+# Go to terminal preferences and select Hackfont
+
+# Terminal Catpuccin theme
+# https://github.com/catppuccin/gnome-terminal
+curl -L https://raw.githubusercontent.com/catppuccin/gnome-terminal/v1.0.0/install.py | python3 -
+# Go go gnome terminal and select profile
+
+# Put terminal in vim mode.
+# Add the below line to ~/.bashrc
+set -o vi
 ```
 
-#### Create a new user repository from this template
+##### Tmux 
+```bash
+# Install tmux and plugin manager
+sudo apt-get install tmux
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm 
 
-Press the "Use this template" button above to create a new repository to store your user configuration.
-
-You can also just clone this repository directly if you do not want to track your user configuration in GitHub.
-
-#### Clone the repository
-
-```shell
-git clone https://github.com/<your_user>/<your_repository> ~/.config/nvim
-```
-
-#### Start Neovim
-
-```shell
-nvim
+# Create config file
+vim ~/.tmux.conf
 ```
