@@ -133,6 +133,6 @@ Double click on cd in banner. Open in terminal.
 ```bash
 sudo ./VBoxLinuxAdditions.run
 ```
-restart vm
+Restart vm.
 
 Enable autoresize and bidirectional keyboard.
