@@ -18,17 +18,19 @@ sudo apt-get install net-tools
 sudo apt-get install xclip
 sudo snap install lnav
 
+
 # Nvim dependencies
 sudo apt-get install ripgrep
 sudo snap install nvim --classic
 sudo apt-get install clangd
 sudo apt-get install vim
+sudo apt-get curl
 
 # Git setup
 sudo apt-get install git
 git config --user.name "<name>"
 git config --user.email "<email>"
-git config —global core.editor “nvim”
+git config --global core.editor “nvim”
 ssh-keygen -t rsa -b 4096
 ssh-add ~./ssh/id_rsa
 
