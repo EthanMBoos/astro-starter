@@ -81,10 +81,12 @@ nvim
 ##### VirtualBox Guest Additions Aside
 With vm closed go to vbox vm Settings > Display > Enable 3D Acceleration
 
-Insert guest additions cd image
+Insert guest additions cd image.
+
 Double click on cd in banner. Open in terminal.
 ```bash
 sudo ./VBoxLinuxAdditions.run
 ```
 restart vm
+
 Enable autoresize and bidirectional keyboard.
