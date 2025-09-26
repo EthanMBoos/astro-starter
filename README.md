@@ -44,8 +44,8 @@ sudo install lazygit -D -t /usr/local/bin/
 sudo mkdir /usr/local/share/fonts/
 cd ~/Downloads
 sudo unzip Hack.zip -d /usr/local/share/fonts
+# Go to terminal preferences and select Hackfont mono
 sudo fc-cache -f -v
-# Go to terminal preferences and select Hackfont
 # Close terminal, open another
 
 # Terminal Catpuccin theme
