@@ -78,7 +78,7 @@ tmux
 nvim
 ```
 ---
-##### VirtualBox Guest Addition aside
+##### VirtualBox Guest Additions Aside
 With vm closed go to vbox vm Settings > Display > Enable 3D Acceleration
 
 Insert guest additions cd image
