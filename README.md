@@ -122,9 +122,9 @@ run '~/.tmux/plugins/tpm/tpm'
 
 #### Source tmux and run neovim
 ```bash
-# Before running tmux command source the new config
-tmux source-file ~/.tmux.conf
 tmux
+# One time needed
+tmux source-file ~/.tmux.conf
 nvim
 ```
 ---
