@@ -39,7 +39,6 @@ tar xf lazygit.tar.gz lazygit
 sudo install lazygit -D -t /usr/local/bin/
 
 # Download Hackfont - https://www.nerdfonts.com/font-downloads
-sudo mkdir /usr/local/share/fonts/
 cd ~/Downloads
 sudo unzip Hack.zip -d /usr/local/share/fonts
 # Go to terminal preferences and select Hackfont mono
