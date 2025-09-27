@@ -120,8 +120,13 @@ run '~/.tmux/plugins/tpm/tpm'
 #### Source tmux and run neovim
 ```bash
 tmux
+
 # One time needed
+# ---------------------------
 tmux source-file ~/.tmux.conf
+# In terminal: ctrl + s + I
+# ---------------------------
+
 nvim
 ```
 ---
