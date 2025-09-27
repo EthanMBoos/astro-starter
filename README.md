@@ -10,22 +10,22 @@ rm ~/.cache/nvim
 ### Dependencies & Terminal
 ```bash
 # Install dependencies
-sudo apt-get update
-sudo apt-get upgrade
+sudo apt update
+sudo apt upgrade
 
 # Dev packages
-sudo apt-get install net-tools
-sudo apt-get install xclip
+sudo apt install net-tools
+sudo apt install xclip
 
 # Nvim dependencies
-sudo apt-get install ripgrep
+sudo apt install ripgrep
 sudo snap install nvim --classic
-sudo apt-get install clangd
-sudo apt-get install vim
-sudo apt-get install curl
+sudo apt install clangd
+sudo apt install vim
+sudo apt install curl
 
 # Git setup
-sudo apt-get install git
+sudo apt install git
 git config --user.name "<name>"
 git config --user.email "<email>"
 git config --global core.editor “nvim”
@@ -59,7 +59,7 @@ set -o vi
 ### Tmux 
 ```bash
 # Install tmux and plugin manager
-sudo apt-get install tmux
+sudo apt install tmux
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm 
 
 # Create config file
@@ -132,6 +132,11 @@ nvim
 ```
 ---
 ##### VirtualBox Guest Additions Aside
+Install dependencies
+```bash
+sudo apt install build-essential dkms
+```
+
 With vm closed go to vbox vm Settings > Display > Enable 3D Acceleration
 
 Insert guest additions cd image.
