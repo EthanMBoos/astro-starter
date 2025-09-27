@@ -117,7 +117,7 @@ set -g @plugin 'christoomey/vim-tmux-navigator'
 run '~/.tmux/plugins/tpm/tpm'
 ```
 
-#### Source tmux and run neovim
+#### Source tmux and download neovim config
 ```bash
 tmux
 
@@ -125,6 +125,7 @@ tmux
 # ---------------------------
 tmux source-file ~/.tmux.conf
 # In terminal: ctrl + s + I
+git clone https://github.com/EthanMBoos/astro-starter ~/.config/nvim
 # ---------------------------
 
 nvim
