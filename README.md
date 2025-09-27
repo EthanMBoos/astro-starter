@@ -16,8 +16,6 @@ sudo apt-get upgrade
 # Dev packages
 sudo apt-get install net-tools
 sudo apt-get install xclip
-sudo snap install lnav
-
 
 # Nvim dependencies
 sudo apt-get install ripgrep
