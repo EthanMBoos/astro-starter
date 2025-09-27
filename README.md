@@ -22,7 +22,7 @@ sudo apt-get install ripgrep
 sudo snap install nvim --classic
 sudo apt-get install clangd
 sudo apt-get install vim
-sudo apt-get curl
+sudo apt-get install curl
 
 # Git setup
 sudo apt-get install git
