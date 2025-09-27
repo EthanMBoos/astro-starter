@@ -148,3 +148,20 @@ sudo ./VBoxLinuxAdditions.run
 Restart vm.
 
 Enable autoresize and bidirectional keyboard.
+
+---
+#### Configure clangd lsp for any docker project
+Install clangd in the container. Either add the dependency to the dockerfile on container build or install by cli,
+```clangd
+sudo apt update
+sudo apt install clangd
+```
+Add the following line to top level CMakeLists.txt file. This generates a `compile_commands.json` file which clangd will reference to determine header file structure.
+```bash
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+```
+
+Configure `astrolsp.lua` to match the docker environment,
+```bash
+clangd = { "docker", "exec", "-it", "<container_name>", "clangd", "--background-index", "--path-mappings=/home/<host_usr>/code=/home/<docker_usr>", "--compile-commands-dir=./build"},
+```
