@@ -57,6 +57,13 @@ return {
     mappings = {
       -- first key is the mode
       n = {
+        -- (Coming Soon) ccls.nvim AST Navigation
+        -- ["<Leader>lhi"] = { "<cmd>CclsIncomingCallsHierarchy<cr>", desc = "Ccls: Incoming Calls" },
+        -- ["<Leader>lho"] = { "<cmd>CclsOutgoingCallsHierarchy<cr>", desc = "Ccls: Outgoing Calls" },
+        -- ["<Leader>lhb"] = { "<cmd>CclsBaseHierarchy<cr>", desc = "Ccls: Base Classes (Inheritance)" },
+        -- ["<Leader>lhd"] = { "<cmd>CclsDerivedHierarchy<cr>", desc = "Ccls: Derived Classes (Inheritance)" },
+        -- ["<Leader>lht"] = { "<cmd>CclsMemberHierarchy<cr>", desc = "Ccls: Member/Type Hierarchy" },
+        
          -- Diffview git diffing
         ["<Leader>gdd"] = {"<cmd>DiffviewOpen<cr>", desc = "Open diff view of the working tree"},
         ["<Leader>gdm"] = {"<cmd>DiffviewOpen master..HEAD<cr>", desc = "Compare current branch with master"},

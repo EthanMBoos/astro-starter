@@ -49,32 +49,16 @@ return {
           "docker",
           "exec",
           "-i",
-          "<docker_container>",
+          "<docker_container>", -- EDIT_THIS
           "clangd",
           "--background-index",
-          "--path-mappings=/home/<user>/code=/home/<docker_user>",
-          "--compile-commands-dir=./build",
-        },
-      },
-
-      cmakels = {
-        cmd = {
-          "docker",
-          "exec",
-          "-i",
-          "<docker_container>",
-          "cmake-language-server",
+          "--path-mappings=/home/<user>/code=/home/<docker_user>", -- EDIT_THIS
+          "--compile-commands-dir=/home/<docker_user>/project/build", --EDIT_THIS
         },
       },
     },
     -- customize how language servers are attached
     handlers = {
-      -- a function without a key is simply the default handler, functions take two parameters, the server name and the configured options table for that server
-      -- function(server, opts) require("lspconfig")[server].setup(opts) end
-
-      -- the key is the server that is being setup with `lspconfig`
-      -- rust_analyzer = false, -- setting a handler to false will disable the set up of that language server
-      -- pyright = function(_, opts) require("lspconfig").pyright.setup(opts) end -- or a custom handler function can be passed
     },
     -- Configure buffer local auto commands to add when attaching a language server
     autocmds = {

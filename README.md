@@ -7,7 +7,7 @@ rm -rf ~/.local/share/nvim
 rm -rf ~/.local/state/nvim
 rm -rf ~/.cache/nvim
 ```
-### Dependencies & Terminal
+## Dependencies & Terminal
 ```bash
 # Install dependencies
 sudo apt update
@@ -32,12 +32,6 @@ git config --global core.editor “nvim”
 ssh-keygen -t rsa -b 4096
 ssh-add ~./ssh/id_rsa
 
-# Lazygit - https://github.com/jesseduffield/lazygit
-LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | \grep -Po '"tag_name": *"v\K[^"]*')
-curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/download/v${LAZYGIT_VERSION}/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
-tar xf lazygit.tar.gz lazygit
-sudo install lazygit -D -t /usr/local/bin/
-
 # Download Hackfont - https://www.nerdfonts.com/font-downloads
 cd ~/Downloads
 sudo unzip Hack.zip -d /usr/local/share/fonts
@@ -56,7 +50,7 @@ curl -L https://raw.githubusercontent.com/catppuccin/gnome-terminal/v1.0.0/insta
 set -o vi
 ```
 
-### Tmux 
+## Tmux 
 ```bash
 # Install tmux and plugin manager
 sudo apt install tmux
@@ -66,7 +60,7 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 vim ~/.tmux.conf
 ```
 
-#### Tmux config file settings
+### Tmux config file settings
 ```bash
 unbind r
 bind r source-file ~/.tmux.conf
@@ -117,21 +111,54 @@ set -g @plugin 'christoomey/vim-tmux-navigator'
 run '~/.tmux/plugins/tpm/tpm'
 ```
 
-#### Source tmux and download neovim config
+### Finalize Tmux setup
 ```bash
+# Start a new tmux session
 tmux
 
-# One time needed
-# ---------------------------
+# Source the config file to apply settings
 tmux source-file ~/.tmux.conf
-# In terminal: ctrl + s + I
-git clone https://github.com/EthanMBoos/astro-starter ~/.config/nvim
-# ---------------------------
 
+# Inside tmux, press Ctrl+s then I (capital i) to install plugins
+```
+
+### Install AstroNvim configuration
+```bash
+git clone https://github.com/EthanMBoos/astro-starter ~/.config/nvim
 nvim
 ```
+
 ---
-#### VirtualBox Guest Additions
+## Configure clangd lsp for any docker project
+Install clangd in the container. Either add the dependency to the dockerfile on container build or install by cli,
+```bash
+sudo apt update
+sudo apt install clangd
+```
+Generate a `compile_commands.json` file. Add the following line to your top-level `CMakeLists.txt` file and re-run CMake.
+```bash
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+```
+
+Configure `astrolsp.lua` to match the docker environment,
+```bash
+clangd = {
+        cmd = {
+          "docker",
+          "exec",
+          "-i",
+          "<docker_container>", -- EDIT THIS
+          "clangd",
+          "--background-index",
+          "--path-mappings=/home/<user>/code=/home/<docker_user>", -- EDIT THIS
+          "--compile-commands-dir=/home/<docker_user>/project/build", -- EDIT THIS
+        },
+      },
+```
+Verify the setup. Run `:LspInfo` in Neovim to confirm that the clangd client is attached and running. If not installed, run `:Mason` and click i on clangd.
+
+---
+### Bonus: VirtualBox Guest Additions
 Install dependencies
 ```bash
 sudo apt install build-essential dkms
@@ -148,21 +175,3 @@ sudo ./VBoxLinuxAdditions.run
 Restart vm.
 
 Enable autoresize and bidirectional keyboard.
-
----
-#### Configure clangd lsp for any docker project
-Install clangd in the container. Either add the dependency to the dockerfile on container build or install by cli,
-```clangd
-sudo apt update
-sudo apt install clangd
-```
-Generate a `compile_commands.json` file. Add the following line to your top-level `CMakeLists.txt` file and re-run CMake.
-```bash
-set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
-```
-
-Configure `astrolsp.lua` to match the docker environment,
-```bash
-clangd = { "docker", "exec", "-it", "<container_name>", "clangd", "--background-index", "--path-mappings=/home/<host_usr>/code=/home/<docker_usr>", "--compile-commands-dir=./build"},
-```
-Verify the setup. Run `:LspInfo` in Neovim to confirm that the clangd client is attached and running. If not installed, run `:Mason` and click i on clangd.
