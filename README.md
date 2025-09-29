@@ -157,6 +157,30 @@ clangd = {
 ```
 Verify the setup. Run `:LspInfo` in Neovim to confirm that the clangd client is attached and running. If not installed, run `:Mason` and click i on clangd.
 
+**Tmux hotkeys**,
+| Action              | Keybinding                          |
+| :------------------ | :---------------------------------- |
+| **Enter Prefix** | `Ctrl` + `s`                        |
+| **Navigate Panes** | `Ctrl` + `h` / `j` / `k` / `l`      |
+| **Resize Panes** | `Ctrl` + `s` then `h` / `j` / `k` / `l` |
+| **Install Plugins** | `Ctrl` + `s` then `I` (capital i)   |
+
+**Neovim hotkeys**,
+| Neovim Keybinding | Description                         | Category            |
+| :---------------- | :---------------------------------- | :------------------ |
+| `<Leader>` `h`    | Switch between header/source file   | **LSP** |
+| `<Leader>` `fd`   | Go to Definition                    | **LSP** |
+| `<Leader>` `fr`   | Go to References                    | **LSP** |
+| `<Leader>` `gdd`  | Open diff view of the working tree  | **Git (Diffview)** |
+| `<Leader>` `gdm`  | Compare current branch with `master`| **Git (Diffview)** |
+| `<Leader>` `gdf`  | View current file's git history     | **Git (Diffview)** |
+| `<Leader>` `gdc`  | Close all diff views                | **Git (Diffview)** |
+| `<Leader>` `ghp`  | Preview the git hunk under the cursor | **Git (Gitsigns)** |
+| `<Leader>` `ghs`  | Stage the git hunk under the cursor   | **Git (Gitsigns)** |
+| `<Leader>` `ghr`  | Reset the git hunk under the cursor   | **Git (Gitsigns)** |
+| `<Tab>`           | Go to the next buffer               | **Buffers** |
+| `<S-Tab>`         | Go to the previous buffer           | **Buffers** |
+
 ---
 ### Bonus: VirtualBox Guest Additions
 Install dependencies
