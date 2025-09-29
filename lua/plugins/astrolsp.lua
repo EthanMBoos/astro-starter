@@ -49,11 +49,11 @@ return {
           "docker",
           "exec",
           "-i",
-          "<docker_container>", -- EDIT_THIS
+          "<docker_container>", -- EDIT THIS
           "clangd",
           "--background-index",
-          "--path-mappings=/home/<user>/code=/home/<docker_user>", -- EDIT_THIS
-          "--compile-commands-dir=/home/<docker_user>/project/build", --EDIT_THIS
+          "--path-mappings=/home/<user>/code=/home/<docker_user>", -- EDIT THIS
+          "--compile-commands-dir=/home/<docker_user>/project/build", -- EDIT THIS
         },
       },
     },
