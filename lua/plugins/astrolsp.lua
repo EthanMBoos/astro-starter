@@ -54,6 +54,8 @@ return {
           "--background-index",
           "--path-mappings=/home/<user>/code=/home/<docker_user>", -- EDIT THIS
           "--compile-commands-dir=/home/<docker_user>/project/build", -- EDIT THIS
+          "--completion-style=bundled",
+          "--header-insertion=iwyu",
         },
       },
     },

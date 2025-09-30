@@ -83,14 +83,32 @@ return {
         ["<Leader>gtl"] = { function() require("gitsigns").toggle_linehl() end, desc = "Toggle line highlight" },
         ["<Leader>gtd"] = { function() require("gitsigns").toggle_deleted() end, desc = "Toggle highlight deleted lines" },
 
+        -- Non-LSP recursive file search h/cpp swap
+        ["<Leader>h"] = { "<cmd>Ouroboros<cr>", desc = "Switch between header/source file" },
+        
         -- Clangd hotkeys (Swap source and find def/ref)
-        ["<Leader>h"] = {"<cmd>ClangdSwitchSourceHeader<cr>",  desc = "Switch between header/source file" },
+        ["<Leader>H"] = {"<cmd>ClangdSwitchSourceHeader<cr>",  desc = "Switch between header/source file" },
         ["<Leader>fd"] = { function() vim.lsp.buf.definition() end, desc = "Go to Definition"},
         ["<Leader>fr"] = { function() require("snacks.picker").lsp_references() end, desc = "Go to References"},
 
         -- Tab between buffers
         ["<Tab>"] = { function() require("astrocore.buffer").nav(1) end, desc = "Next buffer"},
         ["<S-Tab>"] = { function() require("astrocore.buffer").nav(-1) end, desc = "Previous buffer"},
+
+        -- Refactoring.nvim mappings
+        ["<leader>rr"] = { function() require('refactoring').select_refactor() end, desc = "Refactor: Select" },
+        ["<leader>ri"] = { function() require('refactoring').refactor('Inline Variable') end, desc = "Refactor: Inline Variable" },
+        ["<leader>rdp"] = { function() require('refactoring').debug.printf() end, desc = "Refactor: Debug Print" },
+        ["<leader>rdv"] = { function() require('refactoring').debug.print_var() end, desc = "Refactor: Debug Print Variable" },
+      },
+      v = {
+        -- Refactoring.nvim mappings
+        ["<leader>rr"] = { function() require('refactoring').select_refactor() end, desc = "Refactor: Select" },
+        ["<leader>re"] = { function() require('refactoring').refactor('Extract Function') end, desc = "Refactor: Extract Function" },
+        ["<leader>rv"] = { function() require('refactoring').refactor('Extract Variable') end, desc = "Refactor: Extract Variable" },
+        ["<leader>ri"] = { function() require('refactoring').refactor('Inline Variable') end, desc = "Refactor: Inline Variable" },
+        ["<leader>rdp"] = { function() require('refactoring').debug.printf() end, desc = "Refactor: Debug Print" },
+        ["<leader>rdv"] = { function() require('refactoring').debug.print_var() end, desc = "Refactor: Debug Print Variable" },
       },
     },
   },

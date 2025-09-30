@@ -166,20 +166,27 @@ Verify the setup. Run `:LspInfo` in Neovim to confirm that the clangd client is 
 | **Install Plugins** | `Ctrl` + `s` then `I` (capital i)   |
 
 **Neovim hotkeys**,
-| Neovim Keybinding | Description                         | Category            |
-| :---------------- | :---------------------------------- | :------------------ |
-| `<Leader>` `h`    | Switch between header/source file   | **LSP** |
-| `<Leader>` `fd`   | Go to Definition                    | **LSP** |
-| `<Leader>` `fr`   | Go to References                    | **LSP** |
-| `<Leader>` `gdd`  | Open diff view of the working tree  | **Git (Diffview)** |
-| `<Leader>` `gdm`  | Compare current branch with `master`| **Git (Diffview)** |
-| `<Leader>` `gdf`  | View current file's git history     | **Git (Diffview)** |
-| `<Leader>` `gdc`  | Close all diff views                | **Git (Diffview)** |
-| `<Leader>` `ghp`  | Preview the git hunk under the cursor | **Git (Gitsigns)** |
-| `<Leader>` `ghs`  | Stage the git hunk under the cursor   | **Git (Gitsigns)** |
-| `<Leader>` `ghr`  | Reset the git hunk under the cursor   | **Git (Gitsigns)** |
-| `<Tab>`           | Go to the next buffer               | **Buffers** |
-| `<S-Tab>`         | Go to the previous buffer           | **Buffers** |
+| Keybinding | Description | Category |
+| :--- | :--- | :--- |
+| `<Leader>` `H` | Switch between header/source file (Clangd) | **C++/LSP** |
+| `<Leader>` `h` | Switch between header/source file (Generic) | **C++/LSP** |
+| `<Leader>` `fd` | Go to Definition | **C++/LSP** |
+| `<Leader>` `fr` | Go to References | **C++/LSP** |
+| `<Leader>` `re` | **(Visual)** Extract selected code to a function | **Refactoring** |
+| `<Leader>` `rv` | **(Visual)** Extract selected code to a variable | **Refactoring** |
+| `<Leader>` `ri` | Inline variable under cursor or in selection | **Refactoring** |
+| `<Leader>` `rr` | Select a refactor to apply | **Refactoring** |
+| `<Leader>` `rdp` | Add a debug print statement (`std::cout << "HERE" ...`) | **Refactoring** |
+| `<Leader>` `rdv` | Print variable under cursor or in selection | **Refactoring** |
+| `<Leader>` `gdd` | Open diff view of the working tree | **Git (Diffview)** |
+| `<Leader>` `gdm` | Compare current branch with `master` | **Git (Diffview)** |
+| `<Leader>` `gdf` | View current file's git history | **Git (Diffview)** |
+| `<Leader>` `gdc` | Close all diff views | **Git (Diffview)** |
+| `<Leader>` `ghp` | Preview the git hunk under the cursor | **Git (Gitsigns)** |
+| `<Leader>` `ghs` | Stage the git hunk under the cursor | **Git (Gitsigns)** |
+| `<Leader>` `ghr` | Reset the git hunk under the cursor | **Git (Gitsigns)** |
+| `<Tab>` | Go to the next buffer | **Buffers** |
+| `<S-Tab>` | Go to the previous buffer | **Buffers** |
 
 ---
 ### Bonus: VirtualBox Guest Additions

@@ -11,7 +11,6 @@ return {
   { import = "astrocommunity.git.git-blame-nvim" },
   { import = "astrocommunity.git.diffview-nvim" },
   { import = "astrocommunity.colorscheme.catppuccin" },
-  { import = "astrocommunity.pack.cmake" },
 
   -- import/override with your plugins folder
 }
