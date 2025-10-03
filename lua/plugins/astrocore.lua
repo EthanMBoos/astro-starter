@@ -89,9 +89,16 @@ return {
         -- Clangd hotkeys (Swap source and find def/ref)
         ["<Leader>H"] = {"<cmd>ClangdSwitchSourceHeader<cr>",  desc = "Switch between header/source file" },
         ["<Leader>fd"] = { function() vim.lsp.buf.definition() end, desc = "Go to Definition"},
+        ["<Leader>fD"] = { function() vim.lsp.buf.declaration() end, desc = "Go to Declaration"},
         ["<Leader>fr"] = { function() require("snacks.picker").lsp_references() end, desc = "Go to References"},
-        ["<Leader>fh"] = { function() vim.lsp.buf.typehierarchy() end, desc = "Find Type Hierarchy (Base/Derived Classes)" },
-        ["<Leader>fc"] = { function() vim.lsp.buf.callhierarchy() end, desc = "Find Call Hierarchy (Callers/Callees)" },
+        ["<Leader>fa"] = { function() vim.lsp.buf.code_action() end, desc = "Code actions"},
+        
+        -- Requires newer clangd version
+        ["<Leader>fh"] = { function() vim.lsp.buf.typehierarchy() end, desc = "Find Type Hierarchy (Base / Derived Classes)"},
+        ["<Leader>fc"] = { function() vim.lsp.buf.callhierarchy() end, desc = "Find Call Hierarchy (Callers/Callees)"},
+        ["<Leader>fi"] = { function() vim.lsp.buf.incoming_calls() end, desc = "Incoming Calls"},
+        ["<Leader>fo"] = { function() vim.lsp.buf.outgoing_calls() end, desc = "Outgoing calls"},
+        ["<Leader>fn"] = { function() vim.lsp.buf.rename() end, desc = "Rename symbol across project"},
 
         -- Tab between buffers
         ["<Tab>"] = { function() require("astrocore.buffer").nav(1) end, desc = "Next buffer"},
