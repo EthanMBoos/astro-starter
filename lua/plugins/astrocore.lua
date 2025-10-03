@@ -90,6 +90,8 @@ return {
         ["<Leader>H"] = {"<cmd>ClangdSwitchSourceHeader<cr>",  desc = "Switch between header/source file" },
         ["<Leader>fd"] = { function() vim.lsp.buf.definition() end, desc = "Go to Definition"},
         ["<Leader>fr"] = { function() require("snacks.picker").lsp_references() end, desc = "Go to References"},
+        ["<Leader>fh"] = { function() vim.lsp.buf.typehierarchy() end, desc = "Find Type Hierarchy (Base/Derived Classes)" },
+        ["<Leader>fc"] = { function() vim.lsp.buf.callhierarchy() end, desc = "Find Call Hierarchy (Callers/Callees)" },
 
         -- Tab between buffers
         ["<Tab>"] = { function() require("astrocore.buffer").nav(1) end, desc = "Next buffer"},
