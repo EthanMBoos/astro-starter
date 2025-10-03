@@ -134,6 +134,25 @@ Install clangd in the container. Either add the dependency to the dockerfile on 
 ```bash
 sudo apt update
 sudo apt install clangd
+
+
+ARG LLVM_VERSION=18
+
+# Set DEBIAN_FRONTEND to noninteractive to avoid prompts during installation
+ENV DEBIAN_FRONTEND=noninteractive
+
+# Install dependencies and the latest clangd
+RUN apt-get update && \
+    # Install wget and gnupg to fetch the LLVM script and keys
+    apt-get install -y wget gnupg && \
+    # Fetch and run the official LLVM repository installer script
+    wget -O - https://apt.llvm.org/llvm.sh | bash -s -- ${LLVM_VERSION} && \
+    # Install the clangd package for the specified version
+    apt-get install -y clangd-${LLVM_VERSION} && \
+    # (Optional) Create a generic symlink so you can just call `clangd`
+    ln -s /usr/bin/clangd-${LLVM_VERSION} /usr/bin/clangd && \
+    # Clean up the apt cache to reduce image size
+    rm -rf /var/lib/apt/lists/*
 ```
 Generate a `compile_commands.json` file. Add the following line to your top-level `CMakeLists.txt` file and re-run CMake.
 ```bash
