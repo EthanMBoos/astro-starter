@@ -132,26 +132,28 @@ nvim
 ## Configure clangd lsp for any docker project
 Install clangd in the container. Either add the dependency to the dockerfile on container build or install by cli,
 ```bash
+# Install older version of clangd via cli
+# ---------------------------------------
 sudo apt update
 sudo apt install clangd
 
+# Install newest version of clangd from dockerfile
+# ------------------------------------------------
+ARG LLVM_VERSION=19
 
-ARG LLVM_VERSION=18
-
-# Set DEBIAN_FRONTEND to noninteractive to avoid prompts during installation
-ENV DEBIAN_FRONTEND=noninteractive
-
-# Install dependencies and the latest clangd
 RUN apt-get update && \
-    # Install wget and gnupg to fetch the LLVM script and keys
-    apt-get install -y wget gnupg && \
+    apt-get install -y --no-install-recommends \
+        wget \
+        gnupg \
+        lsb-release \
+        software-properties-common && \
+    \
     # Fetch and run the official LLVM repository installer script
     wget -O - https://apt.llvm.org/llvm.sh | bash -s -- ${LLVM_VERSION} && \
-    # Install the clangd package for the specified version
     apt-get install -y clangd-${LLVM_VERSION} && \
-    # (Optional) Create a generic symlink so you can just call `clangd`
+    \
+    # Create a generic symlink so you can call `clangd`
     ln -s /usr/bin/clangd-${LLVM_VERSION} /usr/bin/clangd && \
-    # Clean up the apt cache to reduce image size
     rm -rf /var/lib/apt/lists/*
 ```
 Generate a `compile_commands.json` file. Add the following line to your top-level `CMakeLists.txt` file and re-run CMake.
